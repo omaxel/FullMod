@@ -40,6 +40,10 @@
     visibility: hidden;
   }
 
+  &.fullmod-hiding{
+    overflow: hidden;
+  }
+
   .fullmod-content {
 
     .fullmod-head {
@@ -69,4 +73,8 @@
       }
     }
   }
+}
+
+.fullmod-open {
+  overflow: hidden;
 }

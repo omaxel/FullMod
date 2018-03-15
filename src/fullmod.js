@@ -1,11 +1,16 @@
 ﻿(function ($) {
 
-    var classes = {
+    var statusClasses = {
         showing: 'fullmod-showing',
         shown: 'fullmod-shown',
         hiding: 'fullmod-hiding',
         hidden: 'fullmod-hidden'
     };
+
+    // Class append to body when the modal is shown
+    var fullmodOpenClass = 'fullmod-open';
+    var $body = $(document.body);
+
 
     var transitionEventName = (function () {
         var t;
@@ -24,8 +29,8 @@
         }
     })();
 
-    if (typeof transitionEventName === "undefined") {
-        console.warn("No transitionend event found. Don't use FullMod.");
+    if (typeof transitionEventName === 'undefined') {
+        console.warn("No transitionend event found. Don' t use FullMod.");
         return;
     }
 
@@ -58,7 +63,7 @@
         var fullmod = {};
 
         if (this.length === 0) {
-            console.warn("No jQuery object specified");
+            console.warn('No jQuery object specified');
             return null;
         }
 
@@ -67,42 +72,46 @@
         //region Public methods
 
         fullmod.show = function () {
-            if (fullmod.$element.hasClass(classes.showing) || fullmod.$element.hasClass(classes.shown)) return;
+            if (fullmod.$element.hasClass(statusClasses.showing) || fullmod.$element.hasClass(statusClasses.shown)) return;
             if (shouldReturn(options.onShowing)) return;
+
 
             transitionEventName && fullmod.$element.one(transitionEventName, function () {
 
                 fullmod.$element
-                    .removeClass(classes.showing)
-                    .addClass(classes.shown);
+                    .removeClass(statusClasses.showing)
+                    .addClass(statusClasses.shown);
 
                 runIfFunc(options.onShown);
             });
 
             fullmod.$element
-                .removeClass(classes.hidden)
-                .addClass(classes.showing)
+                .removeClass(statusClasses.hidden)
+                .addClass(statusClasses.showing)
                 .css('top', 0);
+
+            $body.addClass(fullmodOpenClass);
         };
 
         fullmod.hide = function () {
-            if (fullmod.$element.hasClass(classes.hiding) || fullmod.$element.hasClass(classes.hidden)) return;
+            if (fullmod.$element.hasClass(statusClasses.hiding) || fullmod.$element.hasClass(statusClasses.hidden)) return;
             if (shouldReturn(options.onHiding)) return;
 
             transitionEventName && fullmod.$element.one(transitionEventName, function () {
 
                 fullmod.$element
-                    .removeClass(classes.hiding)
-                    .addClass(classes.hidden);
+                    .removeClass(statusClasses.hiding)
+                    .addClass(statusClasses.hidden);
 
                 runIfFunc(options.onHidden);
             });
 
             fullmod.$element
-                .removeClass(classes.shown)
-                .addClass(classes.hiding)
+                .removeClass(statusClasses.shown)
+                .addClass(statusClasses.hiding)
                 .css('top', '');
 
+            $body.removeClass(fullmodOpenClass);
         };
 
         //endregion
@@ -112,7 +121,7 @@
             fullmod.hide();
         });
 
-        fullmod.$element.addClass(classes.hidden);
+        fullmod.$element.addClass(statusClasses.hidden);
 
         return fullmod;
     };
