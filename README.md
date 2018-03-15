@@ -83,7 +83,8 @@ Shows the modal unless the `onShowing` function call returns `false`. If the mod
 
 Shows the modal unless the `onHiding` function call returns `false`. If the modal is already hidden and the `hide` method is called, nothing happens (the `onHiding` function won't be called).
 
-##CSS classes
+## CSS classes
+
 | Action                | Description                                                                                                 | Classes           |
 |-----------------------|-------------------------------------------------------------------------------------------------------------|-------------------|
 | Page loaded.          | The modal is hidden.                                                                                        | `fullmod-hidden`  |
