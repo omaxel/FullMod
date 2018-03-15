@@ -1,0 +1,35 @@
+{
+  "name": "fullmod",
+  "version": "1.0.0",
+  "description": "A tiny jQuery full-screen modal component.",
+  "main": "fullmod.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Omar Muscatello",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OmarMuscatello/FullMod.git"
+  },
+  "keywords": [
+    "modal",
+    "full-screen",
+    "window",
+    "jquery"
+  ],
+  "bugs": {
+    "url": "https://github.com/OmarMuscatello/FullMod/issues"
+  },
+  "homepage": "https://github.com/OmarMuscatello/FullMod#readme"
+}

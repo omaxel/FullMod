@@ -1,0 +1,75 @@
+﻿@mixin transition($value) {
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -o-transition: $value;
+  transition: $value;
+}
+
+@mixin opacity($value) {
+  filter: alpha(opacity=($value*100));
+  -moz-opacity: $value;
+  opacity: $value;
+}
+
+@mixin box-shadow($value) {
+  -moz-box-shadow: $value;
+  -webkit-box-shadow: $value;
+  box-shadow: $value;
+}
+
+.fullmod {
+
+  $padding: 50px;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  position: fixed;
+  top: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  @include box-shadow(0 0px 10px #666);
+  padding: $padding;
+  z-index: 1060;
+
+  @include transition(top 0.5s ease);
+
+  overflow: auto;
+
+  &.fullmod-hidden {
+    visibility: hidden;
+  }
+
+  a {
+    color: #333;
+    @include opacity(0.3);
+    @include transition(opacity 0.3s ease);
+    text-decoration: none;
+
+    &:hover {
+      @include opacity(0.5);
+    }
+  }
+
+  .fullmod-content {
+
+    .fullmod-head {
+
+      .title {
+        font-size: 50px;
+        margin-bottom: 40px;
+        margin-top: 0;
+      }
+
+      .buttons {
+        position: absolute;
+        top: $padding - 10px;
+        right: $padding;
+
+        & > a {
+          font-size: 3em;
+        }
+      }
+    }
+  }
+}
