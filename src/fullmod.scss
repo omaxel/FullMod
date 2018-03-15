@@ -40,17 +40,6 @@
     visibility: hidden;
   }
 
-  a {
-    color: #333;
-    @include opacity(0.3);
-    @include transition(opacity 0.3s ease);
-    text-decoration: none;
-
-    &:hover {
-      @include opacity(0.5);
-    }
-  }
-
   .fullmod-content {
 
     .fullmod-head {
@@ -68,6 +57,14 @@
 
         & > a {
           font-size: 3em;
+          color: #333;
+          @include opacity(0.3);
+          @include transition(opacity 0.3s ease);
+          text-decoration: none;
+
+          &:hover {
+            @include opacity(0.5);
+          }
         }
       }
     }
