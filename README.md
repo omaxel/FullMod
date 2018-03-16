@@ -52,36 +52,45 @@ Then you can show the modal using:
 You can attach events passing them as options in the fullmod constructor.
     
     $('#myFullMod').fullmod({
-        onShowing: function() {
+        onShowing: function(params) {
             console.log('showing');
         }
     });
+    
+You can access to the fullmod instance from all events using the `this` object.
 
-**onShowing** _(default: `null`)_
+**onShowing(params)** _(type: `function`, default value: `null`)_
 
 Function executed when the modal is hidden and the `show` method is called. If return `false`, the modal will never show.
+The `params` parameter is the one specified when the `show` method is called.
 
-**onShown** _(default: `null`)_
+**onShown** _(type: `function`, default value: `null`)_
 
 Function executed when the modal is completely shown after the `show` method is called.
 
-**onHiding** _(default: `null`)_
+**onHiding(params)** _(type: `function`, default value: `null`)_
 
 Function executed when the modal is shown and the `hide` method is called. If return `false`, the modal will never hidden.
+The `params` parameter is the one specified when the `hide` method is called.
 
-**onHidden** _(default: `null`)_
+
+**onHidden** _(type: `function`, default value: `null`)_
 
 Function executed when the modal is completely hidden after the `hide` method is called.
 
 ## Methods
 
-**show()**
+**show(params)**
 
 Shows the modal unless the `onShowing` function call returns `false`. If the modal is already shown and the `show` method is called, nothing happens (the `onShowing` function won't be called).
 
-**hide()**
+The `params` parameter is the object to pass to the `onShowing` event.
+
+**hide(params)**
 
 Shows the modal unless the `onHiding` function call returns `false`. If the modal is already hidden and the `hide` method is called, nothing happens (the `onHiding` function won't be called).
+
+The `params` parameter is the object to pass to the `onHiding` event.
 
 ## CSS classes
 

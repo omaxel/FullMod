@@ -57,13 +57,13 @@
 
 <script>
     var myFullMod = $('#myFullMod').fullmod({
-        onShowing: function () {
+        onShowing: function (params) {
             console.log('showing');
         },
         onShown: function () {
             console.log('shown');
         },
-        onHiding: function () {
+        onHiding: function (params) {
             console.log('hiding');
         },
         onHidden: function () {

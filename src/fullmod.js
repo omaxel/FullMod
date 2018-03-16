@@ -49,13 +49,13 @@
             return typeof obj === 'function';
         };
 
-        var runIfFunc = function (func) {
-            if (isFunc(func)) return func();
+        var runIfFunc = function (func, thisArg, params) {
+            if (isFunc(func)) return func.call(thisArg, params);
             return null;
         };
 
-        var shouldReturn = function (func) {
-            return runIfFunc(func) === false;
+        var shouldReturn = function (func, thisArg, params) {
+            return runIfFunc(func, thisArg, params) === false;
         };
 
         //endregion
@@ -71,9 +71,9 @@
 
         //region Public methods
 
-        fullmod.show = function () {
+        fullmod.show = function (params) {
             if (fullmod.$element.hasClass(statusClasses.showing) || fullmod.$element.hasClass(statusClasses.shown)) return;
-            if (shouldReturn(options.onShowing)) return;
+            if (shouldReturn(options.onShowing, fullmod, params)) return;
 
 
             transitionEventName && fullmod.$element.one(transitionEventName, function () {
@@ -82,7 +82,7 @@
                     .removeClass(statusClasses.showing)
                     .addClass(statusClasses.shown);
 
-                runIfFunc(options.onShown);
+                runIfFunc(options.onShown, fullmod);
             });
 
             fullmod.$element
@@ -93,9 +93,9 @@
             $body.addClass(fullmodOpenClass);
         };
 
-        fullmod.hide = function () {
+        fullmod.hide = function (params) {
             if (fullmod.$element.hasClass(statusClasses.hiding) || fullmod.$element.hasClass(statusClasses.hidden)) return;
-            if (shouldReturn(options.onHiding)) return;
+            if (shouldReturn(options.onHiding, fullmod, params)) return;
 
             transitionEventName && fullmod.$element.one(transitionEventName, function () {
 
@@ -103,7 +103,7 @@
                     .removeClass(statusClasses.hiding)
                     .addClass(statusClasses.hidden);
 
-                runIfFunc(options.onHidden);
+                runIfFunc(options.onHidden, fullmod);
             });
 
             fullmod.$element
