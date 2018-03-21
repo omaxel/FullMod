@@ -34,6 +34,8 @@
         return;
     }
 
+    var fullmodShownCount = 0;
+
     $.fn.fullmod = function (options) {
 
         options = $.extend({
@@ -90,6 +92,7 @@
                 .addClass(statusClasses.showing)
                 .css('top', 0);
 
+            fullmodShownCount++;
             $body.addClass(fullmodOpenClass);
         };
 
@@ -111,7 +114,8 @@
                 .addClass(statusClasses.hiding)
                 .css('top', '');
 
-            $body.removeClass(fullmodOpenClass);
+            fullmodShownCount--;
+            if (fullmodShownCount === 0) $body.removeClass(fullmodOpenClass);
         };
 
         //endregion
