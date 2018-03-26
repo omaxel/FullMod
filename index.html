@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>FullMod Example page</title>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            padding: 60px;
+        }
+
+        button {
+            background-color: #000080;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+    </style>
+
+    <link rel="stylesheet" href="fullmod.min.css">
+</head>
+<body>
+
+<h1>FullMod example page</h1>
+<p>See the <a href="https://github.com/OmarMuscatello/FullMod">project page</a> for more information.</p>
+
+<button onclick="showModal()">Click me</button>
+
+
+<div id="myFullMod" class="fullmod">
+    <div class="fullmod-content">
+
+        <!--FullMod Header-->
+        <div class="fullmod-head">
+            <h2 class="title">This is my title</h2>
+            <div class="buttons">
+                <a href="#" class="btn-close">&times;</a>
+            </div>
+        </div>
+
+        <!--FullMod Body-->
+        <div class="fullmod-body">
+            <p>This is the content of the modal.</p>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script src="fullmod.min.js"></script>
+
+<script>
+    var myFullMod = $('#myFullMod').fullmod({
+        onShowing: function (params) {
+            console.log('showing');
+        },
+        onShown: function () {
+            console.log('shown');
+        },
+        onHiding: function (params) {
+            console.log('hiding');
+        },
+        onHidden: function () {
+            console.log('hidden');
+        }
+    });
+
+    function showModal() {
+        myFullMod.show();
+    }
+</script>
+
+</body>
+</html>
