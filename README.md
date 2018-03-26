@@ -1,6 +1,8 @@
 # FullMod
 FullMod is a tiny jQuery full-screen modal component.
 
+[**DEMO**](https://omarmuscatello.github.io/FullMod/)
+
 * [Dependencies](#dependencies)
 * [Usage](#usage)
 * [Events](#events)
